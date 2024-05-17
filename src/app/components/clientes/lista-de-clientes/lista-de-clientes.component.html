@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Clientes</h1>
+    <a [routerLink]="['/','clientes','agregar']">Agregar</a>
+
+
+    <table class="table table-hover">
+
+        <tbody>
+            <tr *ngFor="let item of clientes">
+                <td>{{item.nombre}}</td>
+                <td>{{item.apellidos}}</td>
+                <td>{{item.correo}}</td>
+                <td>
+                    <a [routerLink]="['clientes','detalles', item.id]">Detalles</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

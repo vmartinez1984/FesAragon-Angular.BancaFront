@@ -1,0 +1,135 @@
+<div class="row">
+    <div class="col-6">
+
+        <form [formGroup]="formGroup" (ngSubmit)="guardar()">
+            <div>
+                <label>Nombre</label>
+                <input formControlName="nombre" class="form-control" type="text" #nombre
+                    [ngClass]="{ 'is-invalid': submitted && f['nombre'].errors}"/>
+                <div *ngIf="submitted && f['nombre'].errors?.['required']" class="invalid-feedback">
+                    <div *ngIf="f['nombre'].errors?.['required']">Ingresa un nombre</div>
+                </div>
+            </div>
+
+            <div>
+                <label>Apellidos</label>
+                <input formControlName="apellidos" class="form-control" type="text" #nombre
+                    [ngClass]="{ 'is-invalid': submitted && f['apellidos'].errors}" />
+                <div *ngIf="submitted && f['apellidos'].errors?.['required']" class="invalid-feedback">
+                    <div *ngIf="f['apellidos'].errors?.['required']">Ingresa apellidos</div>
+                </div>
+            </div>
+
+            <div>
+                <label>Correo</label>
+                <input formControlName="correo" class="form-control" type="text" #nombre
+                    [ngClass]="{ 'is-invalid': submitted && f['correo'].errors}" />
+                <div *ngIf="submitted && f['correo'].errors?.['required']" class="invalid-feedback">
+                    <div *ngIf="f['correo'].errors?.['required']">Ingresa correo</div>
+                </div>
+            </div>
+
+            <div>
+                <label>Telefono</label>
+                <input formControlName="telefono" class="form-control" type="text" #nombre
+                    [ngClass]="{ 'is-invalid': submitted && f['telefono'].errors}" />
+                <div *ngIf="submitted && f['telefono'].errors?.['required']" class="invalid-feedback">
+                    <div *ngIf="f['telefono'].errors?.['required']">Ingresa telefono</div>
+                </div>
+            </div>
+            <hr />
+            <div>
+                <label>Calle y número</label>
+                <input formControlName="calleYNumero" class="form-control" type="text" #nombre
+                    [ngClass]="{ 'is-invalid': submitted && f['calleYNumero'].errors}" />
+                <div *ngIf="submitted && f['calleYNumero'].errors?.['required']" class="invalid-feedback">
+                    <div *ngIf="f['calleYNumero'].errors?.['required']">Ingresa calle y número</div>
+                </div>
+            </div>
+
+            <div>
+                <label>Referencia</label>
+                <input formControlName="referencia" class="form-control" type="text" #nombre
+                    [ngClass]="{ 'is-invalid': submitted && f['referencia'].errors}" />
+                <div *ngIf="submitted && f['referencia'].errors?.['required']" class="invalid-feedback">
+                    <div *ngIf="f['referencia'].errors?.['required']">Ingresa referencia</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="form-label mt-4"><span class="text-danger">*</span>Código postal</label>
+                    <input type="text" formControlName="codigoPostal" (keyup)="buscarCodigoPostal()"
+                        placeholder="Código Postal" maxlength="5" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['codigoPostal'].errors}" />
+                    <div *ngIf="submitted && f['codigoPostal'].errors?.['required']" class="invalid-feedback">
+                        <div *ngIf="f['codigoPostal'].errors?.['required']">Ingresa Código postal</div>
+                    </div>
+                    <small class="form-text text-muted">Código Postal de acuerdo a la Entidad Federativa</small>
+                </div>
+
+
+                <div class="col-6">
+                    <label class="form-label mt-4"><span class="text-danger">*</span>Colonia</label>
+                    <select formControlName="colonia" class="form-select"
+                        [ngClass]="{ 'is-invalid': submitted && f['colonia'].errors}">
+                        <ng-container *ngIf="codigosPostales.length > 1">
+                            <option value="">Seleccione</option>
+                        </ng-container>
+                        <option *ngFor="let item of codigosPostales"
+                            value="{{item.tipoDeAsentamiento}} {{item.asentamiento}}">
+                            {{item.tipoDeAsentamiento}} {{item.asentamiento}}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && f['colonia'].errors?.['required']" class="invalid-feedback">
+                        <div *ngIf="f['colonia'].errors?.['required']">Selecciona colonia</div>
+                    </div>
+                    <small class="form-text text-muted">Colonia de acuerdo a la Entidad Federativa</small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="form-label mt-4"><span class="text-danger">*</span>Alcaldia</label>
+                    <input class="form-control" [disabled]="true" value="{{codigoPostal?.alcaldia}}"
+                        [ngClass]="{ 'is-invalid': submitted && f['alcaldia'].errors}" />
+                    <div *ngIf="submitted && f['alcaldia'].errors?.['required']" class="invalid-feedback">
+                        <div *ngIf="f['alcaldia'].errors?.['required']">Ingresa alcaldia</div>
+                    </div>
+                    <input type="hidden" formControlName="alcaldia" />
+                    <small class="form-text text-muted">Localidad de acuerdo a la Entidad Federativa</small>
+                </div>
+
+                <div class="col-6">
+                    <label class="form-label mt-4"><span class="text-danger">*</span>Estado</label>
+                    <input class="form-control" [disabled]="true" value="{{codigoPostal?.estado}}"
+                        [ngClass]="{ 'is-invalid': submitted && f['estado'].errors}"  />
+                    <div *ngIf="submitted && f['estado'].errors?.['required']" class="invalid-feedback">
+                        <div *ngIf="f['estado'].errors?.['required']">Ingresa estado</div>
+                    </div>
+                    <input type="hidden" formControlName="estado" />
+                    <small class="form-text text-muted">Estado</small>
+                </div>
+            </div>
+
+            <button routerLink="/ahorros" class="btn btn-outline-secondary mt-3 me-3" type="button"
+                [disabled]="estaCargando">
+                Cancelar
+            </button>
+
+            <button type="submit" class="btn btn-outline-primary mt-3" [disabled]="estaCargando">
+                <div *ngIf="estaCargando">
+                    <div class="spinner-border spinner-border-sm text-light" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    Un momento...
+                </div>
+                <div *ngIf="!estaCargando">
+                    <i class="bi bi-save"></i>
+                    Guardar
+                </div>
+            </button>
+        </form>
+
+    </div>
+</div>
