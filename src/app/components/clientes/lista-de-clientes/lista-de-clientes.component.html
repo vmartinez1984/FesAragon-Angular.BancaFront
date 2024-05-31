@@ -2,7 +2,9 @@
     <h1>Clientes</h1>
     <a [routerLink]="['/','clientes','agregar']">Agregar</a>
 
-
+    <div *ngIf="estaCargando">
+        Cargando ...
+    </div>
     <table class="table table-hover">
 
         <tbody>
@@ -11,7 +13,8 @@
                 <td>{{item.apellidos}}</td>
                 <td>{{item.correo}}</td>
                 <td>
-                    <a [routerLink]="['clientes','detalles', item.id]">Detalles</a>
+                    <a [routerLink]="['clientes', item.guid, 'ahorros']"
+                        [queryParams]="item">Detalles</a>
                 </td>
             </tr>
         </tbody>

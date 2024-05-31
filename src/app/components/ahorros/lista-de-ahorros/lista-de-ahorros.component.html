@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>{{clienteNombreCompleto}}</h1>
+    <hr />
+    <h2>Ahorros</h2>
+    <a [routerLink]="['/','clientes', clienteId ,'ahorros','agregar']"
+        [queryParams]="{clienteNombreCompleto}">Agregar</a>
+    <table class="table table-hover">
+        <tbody>
+            <tr *ngFor="let item of ahorros">
+                <td>{{item.nombre}}</td>
+                <td>{{item.total | currency}}</td>
+                <td>
+                    <a [routerLink]="['/','ahorros', item.id]">
+                        Detalles
+                    </a>
+                </td>
+                <td>
+                    <a [routerLink]="['/','ahorros', item.id, 'retiro']"
+                        [queryParams]="{clienteNombreCompleto, clienteId}">
+                        Retiro
+                    </a>
+                </td>
+                <td>
+                    <a [routerLink]="['/','ahorros', item.id, 'deposito']" [queryParams]="{clienteNombreCompleto}">
+                        Deposito
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

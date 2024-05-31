@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "6081:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+# docker-compose up --build

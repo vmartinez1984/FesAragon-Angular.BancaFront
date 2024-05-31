@@ -8,6 +8,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClienteService {
+  obtenerPorId(clienteId: string): Observable<ClienteDto> {
+    return this.httpClient.get<ClienteDto>(this.url + "/" + clienteId)
+  }
+
   obtenerTodos(): Observable<ClienteDto[]> {
     return this.httpClient.get<ClienteDto[]>(this.url)
   }
