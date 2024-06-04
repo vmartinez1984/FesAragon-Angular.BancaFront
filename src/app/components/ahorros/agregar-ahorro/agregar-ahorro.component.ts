@@ -20,29 +20,24 @@ export class AgregarAhorroComponent {
     private servicio: AhorroService,
     private router: Router,
     private servicioDeClientes : ClienteService
-  ) {
-    activatedRoute.queryParams.subscribe(data => {
-      console.log(data)
-      this.clienteNombreCompleto = data['clienteNombreCompleto']
-      this.ahorroDtoIn.clienteNombre = data['clienteNombreCompleto']
-      //console.log(this.clienteNombreCompleto)
-    })
+  ) {    
     this.activatedRoute.params.subscribe((data) => {
       console.log(data)
       this.ahorroDtoIn.clienteId = data['clienteId']
-      //this.obtenetCliente(this.ahorroDtoIn.clienteId)
+      this.obtenetCliente(this.ahorroDtoIn.clienteId)
     })
   }
 
   obtenetCliente(clienteId: string) {
     this.servicioDeClientes.obtenerPorId(clienteId).subscribe({next:(data)=>{
       this.clienteNombreCompleto = data.nombre + " " + data.apellidos
+      this.ahorroDtoIn.clienteNombre = data.nombre + " " + data.apellidos
     }})
   }
 
   agregar(ahorro: AhorroDtoIn) {
     console.log(ahorro)
-    this.router.navigateByUrl('clientes/'+  this.ahorroDtoIn.clienteId + '/ahorros?clienteNombreCompleto=' + this.clienteNombreCompleto)
+    this.router.navigateByUrl('clientes/'+  this.ahorroDtoIn.clienteId)
     this.servicio.agregar(this.ahorroDtoIn).subscribe({
       next:(data)=>{
       },

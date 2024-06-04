@@ -24,7 +24,7 @@
                     [ngClass]="{ 'is-invalid': submitted && f['referencia'].errors}"/>                
             </div>
 
-            <button routerLink="/ahorros" class="btn btn-outline-secondary mt-3 me-3" type="button"
+            <button [routerLink]="['/ahorros', ahorroId ]" class="btn btn-outline-secondary mt-3 me-3" type="button"
                 [disabled]="estaCargando">
                 Cancelar
             </button>

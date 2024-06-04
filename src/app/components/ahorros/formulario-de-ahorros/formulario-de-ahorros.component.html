@@ -14,7 +14,7 @@
 
             <div>
                 <label>Nombre del cliente</label>
-                <input formControlName="clienteNombreCompleto" class="form-control" />                
+                <input formControlName="clienteNombreCompleto" class="form-control" [value]="ahorro?.clienteNombre" />                
             </div>
 
             <div>
@@ -32,7 +32,7 @@
                     [ngClass]="{ 'is-invalid': submitted && f['nota'].errors}"/>                
             </div>
 
-            <button routerLink="/ahorros" class="btn btn-outline-secondary mt-3 me-3" type="button"
+            <button [routerLink]="['/','clientes', ahorro?.clienteId, 'ahorros']" class="btn btn-outline-secondary mt-3 me-3" type="button"
                 [disabled]="estaCargando">
                 Cancelar
             </button>

@@ -8,6 +8,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AhorroService {
+  retirar(ahorroId: string, movimiento: MovimientoDtoIn): Observable<any> {
+    return this.httpClient.post<any>(this.url + "/" + ahorroId + "/retiros", movimiento)
+  }
+
+  obtenerPorId(ahorroId: string):Observable<any> {
+    return this.httpClient.get(this.url + "/" + ahorroId )
+  }
+
   depositar(ahorroId: string, movimiento: MovimientoDtoIn): Observable<any> {
     return this.httpClient.post<any>(this.url + "/" + ahorroId + "/depositos", movimiento)
   }

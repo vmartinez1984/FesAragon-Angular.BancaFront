@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClienteDtoIn } from 'src/app/cliente';
 import { CodigoPostalDto } from 'src/app/codigo-postal';
+import { Alerta } from 'src/app/helpers/alerta';
 import { Guid } from 'src/app/helpers/guid';
 import { CodigoPostalService } from 'src/app/services/codigo-postal.service';
 
@@ -39,6 +40,9 @@ export class FormularioDeClienteComponent {
               });
             }
           }
+        },
+        error:(data)=>{
+          Alerta.error()
         }
       })
     }

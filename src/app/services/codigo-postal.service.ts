@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CodigoPostalDto } from '../codigo-postal';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +13,5 @@ export class CodigoPostalService {
   }
   constructor(private httpClient: HttpClient) { }
 
-  private url = "http://localhost:8081/index.php/api/CodigosPostales/"
+  private url = environment.apiDeCodigosPostales + "CodigosPostales/"
 }

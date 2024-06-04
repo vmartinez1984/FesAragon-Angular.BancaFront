@@ -1,2 +1,6 @@
-<h1>Retiro</h1>
-<app-formulario-de-movimiento-de-ahorro/>
+<div class="container">
+
+    <h1>Retiro</h1>
+    <app-formulario-de-movimiento-de-ahorro [ahorroId]="ahorroId" (eventEmmiter)="retirar($event)"/>
+    
+</div>

@@ -31,15 +31,6 @@ export class FormularioDeAhorrosComponent {
     }, 500)
   }
 
-  ngOnChanges() {
-    if (this.ahorro) {
-      console.log(this.ahorro)
-      this.formGroup.patchValue({
-        clienteNombreCompleto: this.ahorro.clienteNombre
-      })
-    }
-  }
-
   inicializarFormgroup() {
     this.formGroup = this.formBuilder.group({
       nombre: ['', Validators.required],

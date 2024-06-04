@@ -1,9 +1,8 @@
 <div class="container">
-    <h1>{{clienteNombreCompleto}}</h1>
+    <h1>{{cliente?.nombre}} {{cliente?.apellidos}}</h1>
     <hr />
     <h2>Ahorros</h2>
-    <a [routerLink]="['/','clientes', clienteId ,'ahorros','agregar']"
-        [queryParams]="{clienteNombreCompleto}">Agregar</a>
+    <a [routerLink]="['/','clientes', clienteId ,'ahorros','agregar']">Agregar</a>
     <table class="table table-hover">
         <tbody>
             <tr *ngFor="let item of ahorros">
@@ -15,13 +14,12 @@
                     </a>
                 </td>
                 <td>
-                    <a [routerLink]="['/','ahorros', item.id, 'retiro']"
-                        [queryParams]="{clienteNombreCompleto, clienteId}">
+                    <a [routerLink]="['/','ahorros', item.id, 'retiro']">
                         Retiro
                     </a>
                 </td>
                 <td>
-                    <a [routerLink]="['/','ahorros', item.id, 'deposito']" [queryParams]="{clienteNombreCompleto}">
+                    <a [routerLink]="['/','ahorros', item.id, 'deposito']">
                         Deposito
                     </a>
                 </td>

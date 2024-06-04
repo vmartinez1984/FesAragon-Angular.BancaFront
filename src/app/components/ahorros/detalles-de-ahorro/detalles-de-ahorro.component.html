@@ -1,1 +1,39 @@
-<p>detalles-de-ahorro works!</p>
+<div class="container">
+    <h1>{{ahorro?.nombre}}</h1>
+    <hr class="text-info" />
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <td>Interes {{ahorro?.interes}} %</td>
+                <td>Total {{ahorro?.total | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a [routerLink]="['/','clientes', ahorro?.clienteId,'ahorros']">Regresar</a>
+    <div class="row">
+        <div class="col-6">
+            <h2>Depositos</h2>
+            <a [routerLink]="['/ahorros',ahorro?.id, 'deposito']">Depositar</a>
+            <table class="table table-hover">
+                <tbody>
+                    <tr *ngFor="let item of ahorro?.depositos">
+                        <td>{{item.cantidad | currency}}</td>
+                        <td>{{item.fechaDeRegistro | date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h2>Retiros</h2>
+            <a [routerLink]="['/ahorros',ahorro?.id, 'retiro']">Retirar</a>
+            <table class="table table-hover">
+                <tbody>
+                    <tr *ngFor="let item of ahorro?.retiros">
+                        <td>{{item.cantidad | currency}}</td>
+                        <td>{{item.fechaDeRegistro | date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

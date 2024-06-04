@@ -9,7 +9,9 @@ export interface Ahorro {
     guid: string
     id: number
     tipoDeCuenta: string
-    interes: number
+    interes: number,
+    depositos: MovimientoDto[]
+    retiros: MovimientoDto[]
 }
 
 export interface AhorroDtoIn {
@@ -21,7 +23,15 @@ export interface AhorroDtoIn {
     nota: string
 }
 
-export interface MovimientoDtoIn {
+export interface MovimientoDtoIn {    
+    cantidad: number
+    id: string
+    concepto: string
+    referencia: string
+}
+
+export interface MovimientoDto {
+    fechaDeRegistro: Date
     cantidad: number
     id: string
     concepto: string

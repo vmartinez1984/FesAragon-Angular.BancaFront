@@ -16,7 +16,8 @@ export class FormularioDeMovimientoDeAhorroComponent {
 
   @Output() eventEmmiter = new EventEmitter<MovimientoDtoIn>()
   @ViewChild('cantidad') inputNombre!: ElementRef
-
+  @Input() ahorroId =''
+  
   constructor(
     private formBuilder: FormBuilder
   ) {

@@ -14,7 +14,8 @@ import { AgregarAhorroComponent } from './components/ahorros/agregar-ahorro/agre
 import { DetallesDeAhorroComponent } from './components/ahorros/detalles-de-ahorro/detalles-de-ahorro.component';
 import { FormularioDeMovimientoDeAhorroComponent } from './components/ahorros/formulario-de-movimiento-de-ahorro/formulario-de-movimiento-de-ahorro.component';
 import { RetiroDeAhorroComponent } from './components/ahorros/retiro-de-ahorro/retiro-de-ahorro.component';
-import { DepositoDeAhorroComponent } from './components/ahorros/deposito-de-ahorro/deposito-de-ahorro.component'
+import { DepositoDeAhorroComponent } from './components/ahorros/deposito-de-ahorro/deposito-de-ahorro.component';
+import { NavbarComponent } from './templates/navbar/navbar.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DepositoDeAhorroComponent } from './components/ahorros/deposito-de-ahor
     DetallesDeAhorroComponent,
     FormularioDeMovimientoDeAhorroComponent,
     RetiroDeAhorroComponent,
-    DepositoDeAhorroComponent
+    DepositoDeAhorroComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

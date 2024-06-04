@@ -13,7 +13,7 @@
                 <td>{{item.apellidos}}</td>
                 <td>{{item.correo}}</td>
                 <td>
-                    <a [routerLink]="['clientes', item.guid, 'ahorros']"
+                    <a [routerLink]="['/','clientes', item.guid, 'ahorros']"
                         [queryParams]="item">Detalles</a>
                 </td>
             </tr>
